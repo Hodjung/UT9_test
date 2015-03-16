@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_blue_grey_800"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/logo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:src="@mipmap/ic_launcher" />
+        <EditText
+            android:id="@+id/editSearch"
+            android:textColor="#FFFFFFFF"
+            android:textColorHint="#FFFFFFFF"
+            android:hint="Search"
+            android:visibility="invisible"
+            android:paddingTop="10dp"
+            android:layout_toLeftOf="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/logo"/>
+        <ImageButton
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSearch"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:src="@android:drawable/ic_menu_search"
+            android:background="@color/material_blue_grey_800" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/containerMain"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topBar"
+        android:layout_above="@+id/footerBar">
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/footerBar"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@color/button_material_light"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:id="@+id/map"
+            android:text="Map"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/route"
+            android:text="Route"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/profile"
+            android:text="Profile"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:layout_alignParentRight="true"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</RelativeLayout>
