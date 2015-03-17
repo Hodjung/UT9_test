@@ -8,17 +8,21 @@
         android:id="@+id/topBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/material_blue_grey_800"
+        android:background="#ff262b2e"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:id="@+id/logo"
+            android:src="@mipmap/logo_invert"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_alignParentStart="true" />
         <EditText
             android:id="@+id/editSearch"
             android:textColor="#FFFFFFFF"
@@ -41,7 +45,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:src="@android:drawable/ic_menu_search"
-            android:background="@color/material_blue_grey_800" />
+            android:background="#ff262b2e" />
 
     </RelativeLayout>
 
@@ -67,23 +71,27 @@
             android:textSize="30dp"
             android:textAlignment="center"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
         <TextView
             android:id="@+id/route"
             android:text="Route"
             android:textSize="30dp"
             android:textAlignment="center"
-            android:layout_centerHorizontal="true"
             android:layout_width="100dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
         <TextView
             android:id="@+id/profile"
             android:text="Profile"
             android:textSize="30dp"
-            android:textAlignment="center"
-            android:layout_alignParentRight="true"
+            android:textAlignment="viewEnd"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
 </RelativeLayout>
