@@ -1,8 +1,10 @@
 package com.example.krid.ut9_test;
 
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.provider.Contacts;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -32,9 +34,9 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().add(R.id.container,new first_page()).commit();
-        }
+        Intent intent=new Intent(MainActivity.this,first_page.class);
+        startActivity(intent);
+        finish();
     }
     public void change_page(int page){
         if (page==9){
@@ -60,36 +62,7 @@ public class MainActivity extends FragmentActivity {
             while(0<getSupportFragmentManager().beginTransaction().replace(R.id.containerMain, new page_profile()).commit());
         }
     }
-    public class first_page extends Fragment {
-        public first_page() {}
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-        }
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            final View rootView = inflater.inflate(R.layout.first_page, container, false);
-            CheckBox box = (CheckBox)rootView.findViewById(R.id.checkBox);
-            box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    EditText confirm = (EditText)rootView.findViewById(R.id.confirm);
-                    if (isChecked)
-                        confirm.setVisibility(View.VISIBLE);
-                    else confirm.setVisibility(View.INVISIBLE);
-                }
-            });
-            ImageButton btn = (ImageButton)rootView.findViewById(R.id.next);
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    change_page(TUTORIAL_PAGE);
-                }
-            });
-            return rootView;
-        }
-    }
+
     public class tutorial_page extends Fragment {
         public tutorial_page(){}
         @Override
