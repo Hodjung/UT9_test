@@ -2,6 +2,7 @@ package com.example.krid.ut9_test;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,25 +27,38 @@ import java.util.List;
 public class first_page extends Activity {
     private ProgressDialog pDialog;
     JSONParser jParser = new JSONParser();
+    boolean isNewUser;
+    EditText phone,pass,confirm_pass;
     public first_page() {}
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.first_page);
+        isNewUser=false;
+        phone=(EditText)findViewById(R.id.phone_number);
+        pass=(EditText)findViewById(R.id.password);
+        confirm_pass=(EditText)findViewById(R.id.confirm);
         CheckBox box = (CheckBox)findViewById(R.id.checkBox);
         box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 EditText confirm = (EditText)findViewById(R.id.confirm);
-                if (isChecked)
+                if (isChecked) {
                     confirm.setVisibility(View.VISIBLE);
-                else confirm.setVisibility(View.INVISIBLE);
+                    isNewUser=true;
+                }
+                else {
+                    confirm.setVisibility(View.INVISIBLE);
+                    isNewUser=false;
+                }
             }
         });
         ImageButton btn = (ImageButton)findViewById(R.id.next);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new checkUser().execute();
+                Intent intent=new Intent(first_page.this,tutorial_page.class);
+                startActivity(intent);
+                //new checkUser().execute();
             }
         });
         super.onCreate(savedInstanceState);
@@ -63,13 +77,17 @@ public class first_page extends Activity {
         @Override
         protected String doInBackground(String... args) {
             // Building Parameters
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("username", ));
-            params.add(new BasicNameValuePair("password", )));
-            // getting JSON Object
-            // Note that create product url accepts POST method
-            JSONObject json = jParser.makeHttpRequest("localhost/check_user", "POST", params);
-
+            if (!isNewUser){
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("phone",phone.getText().toString()));
+                params.add(new BasicNameValuePair("password",pass.getText().toString()));
+                // getting JSON Object
+                // Note that create product url accepts POST method
+                JSONObject json = jParser.makeHttpRequest("localhost/check_user", "POST", params);
+            }
+            else {
+                //new user
+            }
             return null;
         }
 
